@@ -2,6 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var https = require('https');
 var path = require('path');
+var cors = require('cors')
 var bodyParser = require('body-parser');
 
 var Houndify = require('houndify');
@@ -18,6 +19,7 @@ var config = require(path.join(__dirname, configFile));
 var app = express();
 var port = config.port || 8446;
 var publicFolder = argv.public || 'public';
+app.use(cors())
 app.use(express.static(path.join(__dirname, publicFolder)));
 
 
